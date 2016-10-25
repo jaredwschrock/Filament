@@ -33,6 +33,7 @@ public class jared_recaller : MonoBehaviour {
 			float spacingStart = 0 - ((spacing * itemsToRecall.Count) / 2);
 			for (int i = 0; i < itemsToRecall.Count; i++) {
 				copyItem = Instantiate(itemsToRecall[i]);
+				copyItem.transform.localScale = itemsToRecall[i].transform.localScale;
 				copyItem.transform.parent = this.transform;
 				copyItem.transform.localPosition = new Vector3(spacingStart+(i*spacing), 0f, 0.5f);
 				copyItem.GetComponentInChildren<Rigidbody>().useGravity = false;
