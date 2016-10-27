@@ -5,6 +5,7 @@ public class Openable_Door : VRTK_InteractableObject
 {
     public bool flipped = false;
     public bool rotated = false;
+	public bool rotateOnY = false;
 
     private float sideFlip = -1;
     private float side = -1;
@@ -44,7 +45,11 @@ public class Openable_Door : VRTK_InteractableObject
 
     private void SetRotation()
     {
-        openRotation = new Vector3(defaultRotation.x, defaultRotation.y + (doorOpenAngle * (sideFlip * side)), defaultRotation.z);
+		if (rotateOnY) {
+			openRotation = new Vector3(defaultRotation.x, defaultRotation.y + (doorOpenAngle * (sideFlip * side)), defaultRotation.z);
+		} else {
+			openRotation = new Vector3(defaultRotation.x + (doorOpenAngle * (sideFlip * side)), defaultRotation.y, defaultRotation.z);
+		}
     }
 
     private void SetDoorRotation(Vector3 interacterPosition)
